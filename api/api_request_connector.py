@@ -27,3 +27,10 @@ class APIRequestConnector:
             return GET(self._URL, params=params,
                        proxies={"https": "https://" + proxy})
         return GET(self._URL, params=params, proxies={"https": self.selected_proxy} if with_custom_proxy else None)
+
+    def request_extra(self, url: str, with_custom_proxy=False, proxy: str = None) -> Response:
+        print("URL", url)
+        if proxy != None:
+            return GET(url,
+                       proxies={"https": "https://" + proxy})
+        return GET(url, proxies={"https": self.selected_proxy} if with_custom_proxy else None)

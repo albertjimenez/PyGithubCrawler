@@ -26,7 +26,6 @@ class BasicController(Resource):
         type_query = json[self.type]
         if self.proxies in json.keys():
             list_proxies = json[self.proxies]
-            print("list Proxies", list_proxies)
             random_proxy = list_proxies[randint(0, len(list_proxies) - 1)]
             response = self.api_request_connector.request(keywords, TypeQuery.get_type_from_str(type_query),
                                                           proxy=random_proxy)
