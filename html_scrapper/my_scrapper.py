@@ -1,8 +1,6 @@
 from html.parser import HTMLParser
 from json import loads
 
-from requests import get as GET
-
 
 class MyHTMLParser(HTMLParser):
 
@@ -31,16 +29,10 @@ class MyExtraHTMLParser(MyHTMLParser):
         if tag == 'span':
             for attr in attrs:
                 if attr[0] == "aria-label" and attr[1] != "in this repository" and attr[1] != "in all of GitHub":
-                    lang, percent = attr[1].split()
-                    self.lang_stats[lang] = float(percent[:-1])
+                    splitted_attr = attr[1].split()
+                    if len(splitted_attr) == 2:
+                        lang, percent = attr[1].split()
+                        self.lang_stats[lang] = float(percent[:-1])
 
     def get_lang_stats(self):
-        print(self.lang_stats)
         return self.lang_stats
-
-
-if __name__ == '__main__':
-    response = GET("https://github.com/search?")
-    parser = MyExtraHTMLParser()
-    parser.feed(str(response.content))
-    parser.get_lang_stats()
