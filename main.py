@@ -10,7 +10,5 @@ api = Api(app)
 api.add_resource(BasicController, '/')
 api.add_resource(ExtraController, '/extra')
 
-# TODO diccionario con key clase - ruta
-
 if __name__ == '__main__':
     app.run(debug=True)

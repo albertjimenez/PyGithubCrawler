@@ -7,11 +7,18 @@ from html_scrapper.my_scrapper import MyExtraHTMLParser
 
 
 class ExtraController(BasicController):
+    """
+    Controller with extra capabilities to perform the second exercise of the test
+    """
     def __init__(self) -> None:
         super().__init__()
         self.my_extra_html_parser = MyExtraHTMLParser()
 
     def get(self):
+        """
+       Delegates the GET functionality of the REST Controller. Gathers the data and set up everything
+       :return: List of objects containing URL, owner, language stats with name and percentage use, as a JSON
+       """
         url_list = super().get()
         json_extra = []
         for a_url in url_list:

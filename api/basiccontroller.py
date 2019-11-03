@@ -8,6 +8,9 @@ from my_enum.type_query import TypeQuery
 
 
 class BasicController(Resource):
+    """
+    Basic Controller that handles the first exercise of the test
+    """
 
     def __init__(self) -> None:
         super().__init__()
@@ -18,6 +21,10 @@ class BasicController(Resource):
         self.type = "type"
 
     def get(self):
+        """
+        Delegates the GET functionality of the REST Controller. Gathers the data and set up everything
+        :return: List of URL as a JSON
+        """
         is_valid = self._validate_body(request)
         if not is_valid:
             return {"error_msg": "Body not present in the query or missing fields"}, 400
