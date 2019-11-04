@@ -4,3 +4,4 @@ Coverage
 pytest
 enum-compat
 requests-html
+pytest-cov
